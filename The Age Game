@@ -1,4 +1,4 @@
-from tkinter import Y
+tkinter import Y
 
 
 print("*********************************")
@@ -14,7 +14,7 @@ if 'n' in answer:
     print('okay! see you later then')
     Game=False
 else:
-    Name = input('Okay! put in your initials here')
+    Name = input('Okay! put in your initials here') #this will come back later for when your score is printed
     print('******************************************************')
     choice=input('Awesome! you can try 1, 2, or 3. Which one would you like to try? ')
     choice = int(choice) #this will convert the choice to a number, which allows the rest of the code to function,
@@ -29,7 +29,9 @@ else:
         answer = 15
         print('************************')
         print('Alright! Easy it is!')
-        guess =input('if a person was born in 12/18/2006, how old would they be? ')
+        guess =input('if a person was born in 12/18/2006, how old would they be? ') 
+        #by putting the input equal to guess, we can have the answer equal to the guess
+        
         
     if choice==2:
         answer = 59
@@ -43,7 +45,7 @@ else:
         print('******************************************************************')
         print("Wow! you're going for hard? good luck!")
         guess = input('Okay, if someone was born on December 31st, 1666, what would their age be? ')
-    guess = int(guess)
+    guess = int(guess) #this converts our guess to an integer so python can see if it is equal to the answer
     if guess==answer:
         print('Congrats! you got a score of 50')
         print(Name)
@@ -53,15 +55,23 @@ else:
         guess = int(guess)
         if guess==answer:
             print('congrats! you have a score of 40')
-            print(Name)
+            print(Name) #this prints our name, and our score below it
             print('40')
         else:
             guess = input('Sorry, you get one more shot')
+             #if you get it wrong, it allows for another chance, but it lowers the score
             guess = int(guess)
             if guess==answer:
                 print('Yay! you have a score of 30')
                 print(Name)
                 print('30')
             else:
-                print('sorry, maybe try playing again?')
+                print('sorry, maybe try playing again?') #you get three chances, so you lose, no score.
                 
+
+            
+        
+
+         
+                
+
