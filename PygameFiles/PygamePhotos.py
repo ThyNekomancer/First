@@ -4,6 +4,8 @@
 # creating screens, clrs, shape
 
 import pygame, time,os
+import random
+import math
 pygame.init()#initialize the pygame package
 os.system('cls')
 WIDTH=700 #like constant
@@ -28,20 +30,25 @@ yb=300
 square=pygame.Rect(xb,yb,wb,hb)# create the object to draw
 #keep running create a lp
 circleClr=colors.get('blue')
-backgrnd=colors.get('Green')
+backgrnd=pygame.image.load('PygameFiles\Images\\bgSmaller.jpg')
 run = True
 speed = 5
 cx=350
 cy=350
 rad=25
+ibox=rad*math.sqrt(2)
+xig= cx-(ibox/2)
+yig= cy-(ibox/2)
+insSq=pygame.Rect(xig,yig,ibox,ibox)
 while run:
-    screen.fill(backgrnd)
+
+    screen.bilt(backgrnd)
+
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
             print("Y quit")
-
-  
+            
     keys = pygame.key.get_pressed()
     if keys[pygame.K_RIGHT] and square.x < WIDTH -(wb+speed):
         square.x += speed
@@ -53,14 +60,27 @@ while run:
         square.y -= speed 
     if keys[pygame.K_d] and cx <WIDTH -(rad):
         cx += speed
+        insSq.x += speed
     if keys[pygame.K_a] and cx> (speed+rad):
         cx -= speed
+        insSq.x -= speed
     if keys[pygame.K_w] and cy> (speed+rad):
         cy -= speed
+        insSq.x -= speed
     if keys[pygame.K_s] and cy <HEIGHT -(rad):
         cy += speed
+        insSq.x += speed
 
-
+    if square.colliderect(insSq):
+        print('BOOM')
+        rad+=1
+        cx=random.randint(rad, WIDTH-rad)
+        cy=random.randint(rad, HEIGHT-rad)
+        rad+=5
+        ibox=rad*math.sqrt(2)
+        xig= cx-(ibox/2)
+        yig= cy-(ibox/2)
+        insSq=pygame.Rect(xig,yig,ibox,ibox)
 
     #rect(surface, color, rect) -> Rect
     pygame.draw.rect(screen, redClr,square)

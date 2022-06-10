@@ -13,7 +13,7 @@ else:
     print(message+" I say so")
     print(message.upper())
     print(message)
-else:
+ 
 print("i am in false")
 message=message.upper()
 print(message)
