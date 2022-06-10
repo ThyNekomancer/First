@@ -30,7 +30,7 @@ yb=300
 square=pygame.Rect(xb,yb,wb,hb)# create the object to draw
 #keep running create a lp
 circleClr=colors.get('blue')
-backgrnd=pygame.image.load('PygameFiles\Images\\bgSmaller.jpg')
+backgrnd=colors.get('Green')
 run = True
 speed = 5
 cx=350
@@ -42,13 +42,13 @@ yig= cy-(ibox/2)
 insSq=pygame.Rect(xig,yig,ibox,ibox)
 while run:
 
-    screen.bilt(backgrnd)
+    screen.fill(backgrnd)
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
             print("Y quit")
-            
+
     keys = pygame.key.get_pressed()
     if keys[pygame.K_RIGHT] and square.x < WIDTH -(wb+speed):
         square.x += speed
