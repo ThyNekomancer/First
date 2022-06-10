@@ -1,4 +1,4 @@
-mport os
+import os
 os.system('cls')
 print('Hi')
 print('Hi')
@@ -7,14 +7,13 @@ message="You are awesome"
 print(message)
 print(message[5])
 print(message[0:5])
-if message.isdigit()
+if message.isdigit():
  sum=message +3
 else:
     print(message+" I say so")
- print(message.upper()):
-print(message)
-else:
-    print("i am in false")
-    message=message.upper()
+    print(message.upper())
     print(message)
-
+else:
+print("i am in false")
+message=message.upper()
+print(message)

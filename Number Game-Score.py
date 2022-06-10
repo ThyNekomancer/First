@@ -11,7 +11,7 @@ print(date.strftime("%m-%d-%Y"))
 
 name =input('What is your name?')
 
-maxcount=10
+maxcount=500
 cnt=0
 
 print('*********************')
