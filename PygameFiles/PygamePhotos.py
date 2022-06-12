@@ -30,7 +30,7 @@ yb=300
 square=pygame.Rect(xb,yb,wb,hb)# create the object to draw
 #keep running create a lp
 circleClr=colors.get('blue')
-backgrnd=colors.get('Green')
+backgrnd=pygame.image.load('bgSmaller.png')
 run = True
 speed = 5
 cx=350
