@@ -1,8 +1,9 @@
 #first let's import random procedures since we will be shuffling
-import random, os
+import random, os 
 os.system('cls')
 deck=[]
 #next, let's start building list holders so we can place our cards in there:
+
 def create_DECK():
     global deck
     numberCards = []
@@ -34,6 +35,8 @@ def create_DECK():
             print(deck[counter], end=" ")
             counter +=1
         print()
+   
+   
     #now let's shuffle our deck!
 def playerCards():
     random.shuffle(deck)
@@ -52,18 +55,32 @@ def playerCards():
     #I also want to see what the deck looks like before shuffling. We should have
         #done that a while ago... oh well!
 create_DECK()
-playerCards()
+playerCards() 
+#lets see who's playing
+player1name = input('Please type the name of Player 1' + '\n')
+player2name = input('Please typre the name of Player 2' + '\n')
 
-def playaturn():
+turn=0
+Game=True 
+#the following function allows us to to select the first card in each players collection and pit them against each other
+
+def playaturn(): 
+    global player1name
+    global player2name
     global player1
     global player2
     global Player1count
     global Player2count
     global turn
+    global Game
     input('hit enter to play a turn' + '\t')
     Card1 = player1[0]
     Card2 = player2[0]
-    print('Player 1  '+ Card1 + '\t' + 'Player2  '+ Card2)
+    print(player1name +' '+ Card1 + '\t' + player2name +' '+ Card2)
+    #lets check the value of each card
+    #if it contains a letter, it is a royal and is given a set value depending on which royal it is
+    # if it contains a one, it is set to 10
+    # otherwise, we take the value of the first character, and set it to its integer value
     if 'A' in Card1:
         Cardvalue1=14
     elif 'K' in Card1:
@@ -77,7 +94,7 @@ def playaturn():
     else:
         Cardvalue1=int(Card1[0])
 
-    if 'A' in Card2:
+    if 'A' in Card2: 
         Cardvalue2=14
     elif 'K' in Card2:
         Cardvalue2=13
@@ -85,26 +102,26 @@ def playaturn():
         Cardvalue2=12
     elif 'J'in Card2:
         Cardvalue2=11
-    elif '1'in Card2:
+    elif '1'in Card2: 
         Cardvalue2=10    
     else:
         Cardvalue2=int(Card2[0])
     
-    if Cardvalue1>Cardvalue2:
-        print ('Player 1 wins that turn !' + '\n')
-        player1.append(player1[0])
+    if Cardvalue1>Cardvalue2: #this allows us to determine who wins the round
+        print (player1name + ' wins that turn !' + '\n')
+        player1.append(player1[0])#puts both card won at the bottom of player1's piles
         player1.append(player2[0])
-        player1.pop(0)
+        player1.pop(0)#makes sure the first card for both players are destroyed
         player2.pop(0)
         Player1count+=1
         Player2count-=1
-    #this moves both cards to end of player1 deck and removes the played cards from player1 and player2
+    
        
     elif Cardvalue2>Cardvalue1:
-        print ('Player 2 wins that turn !' + '\n')
-        player2.append(player1[0])
+        print (player2name + ' wins that turn !' + '\n')
+        player2.append(player1[0])#puts both card won at the bottom of player2's piles
         player2.append(player2[0])
-        player1.pop(0)
+        player1.pop(0)#makes sure the first card is destroyed for both players
         player2.pop(0)
         Player1count-=1
         Player2count+=1
@@ -115,26 +132,33 @@ def playaturn():
         player1.pop(0)
         player2.pop(0)
     #this gives each player back their card and puts it at the end of their deck
-                    
+
+         
     turn+=1
     if Player1count <1 or Player2count<1:
-        turn = 51
-        #if either player is out of cards, act like 50 turns played and end gane
+        Game==False
+        #if either player runs out of cards, the game ends
 
 create_DECK()
 playerCards()
+#after the shuffle, we know how many cards the players have
               
 Player1count=26
 Player2count=26
-turn=0
-while turn<51:
+
+while turn<50 and Game==True:
     playaturn()
 
-if Player1count > Player2count:
-    print ('Congratulations ! Player 1 wins ')
+if  Player1count > Player2count:
+    print ('Congratulations ! ' + player1name + ' wins !')
+
 elif Player2count > Player1count:
-    print ('Congratulations ! Player 2 wins')
+    print ('Congratulations ! '+  player2name +' wins')
 else:
     print ('that game was a draw')
+                    
+print (player1name + ' has ' + str(Player1count) + ' cards') #this shows how many cards each player has at the end
+print (player2name + ' has ' + str(Player2count) + ' cards')
+print('This game went for ' + str(turn) +' rounds!')
 
-                    # now add the cards to the winner stack
+    
