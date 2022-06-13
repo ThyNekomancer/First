@@ -6,6 +6,7 @@
 import pygame, time,os
 import random
 import math
+win = pygame.display.set_mode((500,480))
 pygame.init()#initialize the pygame package
 os.system('cls')
 WIDTH=700 #like constant
@@ -30,7 +31,7 @@ yb=300
 square=pygame.Rect(xb,yb,wb,hb)# create the object to draw
 #keep running create a lp
 circleClr=colors.get('blue')
-backgrnd=pygame.image.load('\First\PygameFiles\Images\bgSmaller.jpg')
+backgrnd=pygame.image.load('bgSmaller.jpg')
 run = True
 speed = 5
 cx=350
@@ -42,7 +43,7 @@ yig= cy-(ibox/2)
 insSq=pygame.Rect(xig,yig,ibox,ibox)
 while run:
 
-    screen.fill(backgrnd)
+    win.blit(backgrnd, (0,0))
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
