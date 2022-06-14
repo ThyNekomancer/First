@@ -56,17 +56,18 @@ run = True
 Game = False
 
 def menu():
+    global Title
     Title = TITLE_FONT.render("Circle eats Square", 1, colors.gte("blue"))
 
 def Instructions():
     global text3 
     global text4
     #rendering text objects
-    Title = TITLE_FONT.render("Instructions", 1, colors.get("blue"))
+    Title = TITLE_FONT.render("Menu", 1, colors.get("blue"))
     text1 = MENU_FONT.render("Yes", 1, colors.get("blue"))
     text2 = MENU_FONT.render("No", 1, colors.get("blue"))
-    text3 = MENU_FONT.render("leaderboard", 1, colors.get("blue"))
-    text4 = MENU_FONT.render("playing", 1, colors.get("blue"))
+    text3 = MENU_FONT.render("scores", 1, colors.get("blue"))
+    text4 = MENU_FONT.render("Instructions", 1, colors.get("blue"))
     
     
 
@@ -103,6 +104,8 @@ def Instructions():
     screen.blit(Title, (xd, 50))
     screen.blit(text1, (225, 410))
     screen.blit(text2, (425, 410))
+    screen.blit(text3, (225,610))
+    screen.blit(text4, (425,610))
 
     pygame.display.update()
     while True:
@@ -118,6 +121,8 @@ def Instructions():
                     return True
                 if Button_2.collidepoint((mx, my)):
                     return False
+                if Button_3.collidepoint((mx, my)):
+                    Myfile=open('How-To-Play.txt')
 
 run = Instructions()
 

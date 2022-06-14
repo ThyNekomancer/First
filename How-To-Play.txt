@@ -1,0 +1,8 @@
+from WAR import playaturn, playerCards
+
+
+how to play
+
+this game uses two players 
+one will control the circle, the other will control the avatar,
+the circle will try to eat the avatar, while the avatar will try to survive
