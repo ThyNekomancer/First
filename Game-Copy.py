@@ -1,4 +1,7 @@
+
 import pygame
+
+
 pygame.init()
 
 win = pygame.display.set_mode((500,480))
@@ -85,7 +88,10 @@ while run:
             jumpCount = 10
             isJump = False
 
-    redrawGameWindow() 
+    
+        
+
+    
     
     
 pygame.quit()
