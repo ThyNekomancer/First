@@ -40,3 +40,6 @@ def draw_grid():
         pygame.draw.line(screen, lineClr,(0,WIDTH//3*x),(WIDTH,WIDTH//3), lineWidth)
         pygame.display.update()
         pygame.time.delay(100)
+
+    pygame.time.delay(1000)
+draw_grid
