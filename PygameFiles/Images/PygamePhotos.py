@@ -37,7 +37,7 @@ chary = yb
 cx=350
 cy=350
 rad=25
-speed=2
+speed=1
 ibox = rad*math.sqrt(2)
 xig = cx-(ibox/2)
 yig = cy-(ibox/2)
@@ -60,14 +60,16 @@ def menu():
     Title = TITLE_FONT.render("Circle eats Square", 1, colors.gte("blue"))
 
 def Instructions():
+    global Myfile
     global text3 
     global text4
     #rendering text objects
     Title = TITLE_FONT.render("Menu", 1, colors.get("blue"))
-    text1 = MENU_FONT.render("Yes", 1, colors.get("blue"))
-    text2 = MENU_FONT.render("No", 1, colors.get("blue"))
+    text1 = MENU_FONT.render("Begin Game", 1, colors.get("blue"))
+    text2 = MENU_FONT.render("Exit program", 1, colors.get("blue"))
     text3 = MENU_FONT.render("scores", 1, colors.get("blue"))
     text4 = MENU_FONT.render("Instructions", 1, colors.get("blue"))
+    text5 = MENU_FONT.render("settings", 1, colors.get("blue"))
     
     
 
@@ -121,8 +123,11 @@ def Instructions():
                     return True
                 if Button_2.collidepoint((mx, my)):
                     return False
-                if Button_3.collidepoint((mx, my)):
-                    Myfile=open('How-To-Play.txt')
+                if Button_4.collidepoint((mx, my)):
+                    screen.fill('pink')
+                    open('How-To-Play.txt')
+                    pygame.display.update()
+                     type = MENU_FONT.render("Begin Game", 1, colors.get("blue"))
 
 run = Instructions()
 
@@ -164,6 +169,9 @@ while run:
     if keys[pygame.K_s] and cy <HEIGHT -(rad):  #means clser t max value HEIGHT
         cy += speed
         insSquare.y += speed
+
+    
+
 
     if square.colliderect(insSquare):
         print("BOOM")
