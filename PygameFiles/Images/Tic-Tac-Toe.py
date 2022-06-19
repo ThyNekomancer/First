@@ -655,6 +655,7 @@ def draw_Markers():
     pygame.display.update() 
 cnt=0
 def checkWinner():
+    global ask
     global cnt
     global Game
     print(markers)
@@ -669,44 +670,91 @@ def checkWinner():
             if sum==3:
                 print('Congratulations X Wins' + '\n')
                 pygame.quit()
+                Game = False
+                ask = input('press enter to play again')
+                Game = True
+                cnt = 0
             elif sum==-3:
+                Game = False
                 pygame.quit()
                 print('Congratulations O Wins' + '\n')
+                ask = input('press enter to play again')
+                Game = True
+                cnt = 0
    
     if (markers[0][0] + markers[1][0] + markers[2][0])==3: 
+        Game = False
         pygame.quit()
         print("congrats! X's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][0] + markers[1][0] + markers[2][0])==-3: 
+        Game = False
         pygame.quit()
         print("congrats! 0's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][1] + markers[1][1] + markers[2][1])==3: 
+        Game = False
         pygame.quit()
         print("congrats! X's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][1] + markers[1][1] + markers[2][1])==-3: 
+        Game = False
         pygame.quit()
         print("congrats! 0's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][2] + markers[1][2] + markers[2][2])==3: 
+        Game = False
         pygame.quit()
         print("congrats! X's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][2] + markers[1][2] + markers[2][2])==-3: 
+        Game = False
         pygame.quit()
         print("congrats! 0's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][0] + markers[1][1] + markers[2][2])==-3: 
         Game = False
-        
+        pygame.quit()
         print("congrats! 0's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][0] + markers[1][1] + markers[2][2])==3: 
         Game = False
-        
+        pygame.quit()
         print("congrats! X's win!")
+        ask = input('press enter to play again')
+        Game = True
+        cnt = 0
     if (markers[0][2] + markers[1][1] + markers[2][0])==3: 
         Game = False
-        
+        pygame.quit
         print("congrats! X's win!")
+        ask = input('press enter to play again')
+        Game = True
+        pygame.init()
+        cnt = 0
     if (markers[0][2] + markers[1][1] + markers[2][0])==-3: 
         Game = False
-        
+        pygame.quit()
         print("congrats! 0's win!")
+        ask = input('press enter to play again')
+        Game = True
+        pygame.init()
+        cnt = 0
+        
 
 
 
@@ -716,7 +764,7 @@ def checkWinner():
 def gameEnd():
     print()
 zero_Array()
-while Game and cnt<9 and markers!=3 and markers!=-3:
+while Game and cnt<9:
     screen.fill(backgrnd)
     draw_grid()
     draw_Markers()
@@ -738,10 +786,4 @@ while Game and cnt<9 and markers!=3 and markers!=-3:
                 checkWinner()
 
 
-
-if cnt==9:
-    print('sorry, that was a draw')
-
-    
-
-
+pygame.init()

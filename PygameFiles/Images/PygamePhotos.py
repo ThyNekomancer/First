@@ -54,6 +54,19 @@ circleClr=colors.get("blue")
 backgrnd=colors.get("limeGreen")
 run = True
 Game = False
+def settings():
+    global title, text, text9,text10,text11,text12,text13
+    global  screen, WIDTH, HEIGHT, colors
+    TITLE_FONT = pygame.font.SysFont('comicsans', WIDTH//18)
+    MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//35)
+    colors={"white":(255,255,255),"pink":(255,0,255),"blue":(0,0,255),"limeGreen":(0,100,50),"yellow":(255,255,50),"purple":(229,204,255),"randt":(random.randint(0,255), random.randint(0,255), random.randint(0,255)),"randb":(random.randint(0,255), random.randint(0,255), random.randint(0,255))}
+    title=TITLE_FONT.render('Settings', 1, colors.get('white'))
+    text=MENU_FONT.render('Clr 1', 1, colors.get("yellow"))
+    text9=MENU_FONT.render('Clr 2', 1, colors.get("pink"))
+    text10=MENU_FONT.render('Random Clr', 1, colors.get("pink"))
+    text11=MENU_FONT.render('Smaller Screen', 1, colors.get('blue'))
+    text12=MENU_FONT.render('Bigger Screen', 1, colors.get('limeGreen'))
+    text13=MENU_FONT.render('Enter Name: ', 1, colors.get('blue'))
 
 def menu():
     global Title
@@ -63,6 +76,7 @@ def Instructions():
     global Myfile
     global text3 
     global text4
+    global text5
     #rendering text objects
     Title = TITLE_FONT.render("Menu", 1, colors.get("blue"))
     text1 = MENU_FONT.render("Begin Game", 1, colors.get("blue"))
@@ -81,10 +95,12 @@ def Instructions():
     Button_2 = pygame.Rect(400, 400, 100, 50)
     Button_3 = pygame.Rect(200,600,100, 50 )
     Button_4 = pygame.Rect(400, 600, 100, 50)
+    Button_5 = pygame.Rect(300, 500, 100, 50)
     pygame.draw.rect(screen, colors.get("limeGreen"), Button_1)
     pygame.draw.rect(screen, colors.get("limeGreen"), Button_2)
     pygame.draw.rect(screen, colors.get("limeGreen"), Button_3)
     pygame.draw.rect(screen, colors.get("limeGreen"), Button_4)
+    pygame.draw.rect(screen, colors.get("limeGreen"), Button_5)
 
     #Instructions
     myFile = open("instructions.txt")
@@ -108,6 +124,8 @@ def Instructions():
     screen.blit(text2, (425, 410))
     screen.blit(text3, (225,610))
     screen.blit(text4, (425,610))
+    screen.blit(text5,(325,510))
+
 
     pygame.display.update()
     while True:
@@ -122,12 +140,27 @@ def Instructions():
                 if Button_1.collidepoint((mx, my)):
                     return True
                 if Button_2.collidepoint((mx, my)):
-                    return False
+                    pygame.quit()
                 if Button_4.collidepoint((mx, my)):
                     screen.fill('pink')
-                    open('How-To-Play.txt')
                     pygame.display.update()
-                     type = MENU_FONT.render("Begin Game", 1, colors.get("blue"))
+                    Myfile = open("How-To-Play.txt")
+                    screen.fill('pink')
+                    
+                    Title = MENU_FONT.render("Begin Game", 1, colors.get("blue"))
+                if Button_5.collidepoint((mx,my)):
+                  
+                  
+                    title=TITLE_FONT.render('Settings', 1, colors.get('white'))
+                    text=MENU_FONT.render('Clr 1', 1, colors.get("pink"))
+                    text9=MENU_FONT.render('Clr 2', 1, colors.get("pink"))
+                    text10=MENU_FONT.render('Random Clr', 1, colors.get("pink"))
+                    text11=MENU_FONT.render('Smaller Screen', 1, colors.get('blue'))
+                    text12=MENU_FONT.render('Bigger Screen', 1, colors.get('limeGreen'))
+                    text13=MENU_FONT.render('Enter Name: ', 1, colors.get('blue'))
+
+
+
 
 run = Instructions()
 
