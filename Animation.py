@@ -24,7 +24,7 @@ left = False
 right = False
 walkCount = 0
 
-def redrawGameWindow():
+def Play():
     global walkCount
     
     win.blit(bg, (0,0))  
@@ -85,7 +85,7 @@ while run:
             jumpCount = 10
             isJump = False
 
-    redrawGameWindow() 
+    
     
     
 pygame.quit()

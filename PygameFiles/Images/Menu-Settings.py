@@ -2,7 +2,11 @@
 
 
 
+from tkinter import Menu
+from turtle import title
+from unittest import main
 import pygame, time, os,random, math, datetime, sys
+
 
 date=datetime.datetime.now()
 pygame.init()
@@ -11,10 +15,10 @@ clock = pygame.time.Clock
 
 
 
-WIDTH=700 #like constant
+WIDTH=700 
 HEIGHT=700
 colors={"white":(255,255,255),"pink":(255,0,255),"blue":(0,0,255),"limeGreen":(0,100,50),"yellow":(255,255,0),"purple":(229,204,255),"randt":(random.randint(0,255), random.randint(0,255), random.randint(0,255)),"randb":(random.randint(0,255), random.randint(0,255), random.randint(0,255))}
-message=['Instructions', 'Settings', 'Play', 'Scoreboard', 'Exit']
+message=['Instructions', 'Settings','',  "Play", "", 'Scoreboard',]
 
 screen=pygame.display.set_mode((WIDTH,HEIGHT)) 
 pygame.display.set_caption("Menu")  
@@ -70,6 +74,9 @@ run = True
 Game = False
 
 def mainMenu():
+    global menu
+    global Button_Game3
+    menu = True
     TITLE_FONT = pygame.font.SysFont('comicsans', WIDTH//18)
     MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//35)
     Bx2=WIDTH//6
@@ -78,7 +85,8 @@ def mainMenu():
     Button_instruct=pygame.Rect(Bx, HEIGHT//8, Bx2, WIDTH//18)
     Button_settings=pygame.Rect(Bx, 2*HEIGHT//8, Bx2, WIDTH//18)
     Button_Game2=pygame.Rect(Bx, 4*HEIGHT//8, Bx2, WIDTH//18)
-   
+    Button_Game3=pygame.Rect(Bx, 4*HEIGHT//8, Bx2, WIDTH//18)
+    
     Button_score=pygame.Rect(Bx, 6*HEIGHT//8, Bx2, WIDTH//18)
     Button_exit=pygame.Rect(Bx, 7*HEIGHT//8, Bx2, WIDTH//18)
     #pygame.draw.rect(screen, colors.get('purple'), Button_settings)
@@ -100,23 +108,24 @@ def mainMenu():
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 
-                mainMenu()
-                print("You quit")
+               pygame.quit()
+               sys.exit 
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mousePos = pygame.mouse.get_pos()
+    
                 mx = mousePos[0]
                 my = mousePos[1]
                 if Button_instruct.collidepoint((mx, my)):
                     Instructions()
                 if Button_settings.collidepoint((mx, my)):
                     settings()
-                if Button_score.collidepoint((mx, my)):
-                    Play()
-                if Button_exit.collidepoint((mx, my)):
-                    pygame.quit()
                 if Button_Game2.collidepoint((mx, my)):
+                    Play()
+                if Button_score.collidepoint((mx,my)):
                     scoreboard()
+                if Button_exit.collidepoint((mx,my)):
+                    exit
                 
     
 def Instructions():
@@ -233,10 +242,10 @@ def settings():
                     pygame.draw.rect(screen, colors.get("blue"), Button_9)
                     pygame.display.update()
                     if event.type == pygame.KEYDOWN:
+                        input('what is your name? ')
                         if event.key == pygame.K_RETURN:
                             print(name)
-                            pygame.quit()
-                            sys.exit()
+                           
                         if event.key ==pygame.K_BACKSPACE:
                             name=name[:-1]
                             print('back')
@@ -251,14 +260,16 @@ def settings():
 
 
 def exit():
-    TITLE_FONT = pygame.font.SysFont('comicsans', WIDTH//18)
-    title=TITLE_FONT.render('Bye', 1, colors.get(txtcolor))
+    MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//18)
+    title=MENU_FONT.render('byeeeeeeeee B)', 1, colors.get(txtcolor))
     screen.fill(colors.get(bgcolor))
     screen.blit(title, (WIDTH//2, HEIGHT//2))
     pygame.display.update()
-    pygame.time.delay(1000)
+    pygame.time.delay(2000)
     pygame.quit()
     sys.exit()
+
+    
 
 
 
@@ -266,7 +277,7 @@ def Play():
     global score, hb, wb, xb, rad, yb, charx, chary, cx, cy, speed, ibox, xig, yig, char, bg, mx, my, insSquare, txtcolor, bgcolor
     TITLE_FONT = pygame.font.SysFont('comicsans', WIDTH//18)
     MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//35)
-    title=TITLE_FONT.render('Game Level 2', 1, colors.get(txtcolor))
+    title=TITLE_FONT.render('Circle Eats Square', 1, colors.get(txtcolor))
     screen.fill(colors.get(bgcolor))
     rad = 25
     screen.blit(title, (275,50))
@@ -345,6 +356,7 @@ def Play():
         
         pygame.display.update()
         pygame.time.delay(5)
+
 
 
 def scoreboard():
