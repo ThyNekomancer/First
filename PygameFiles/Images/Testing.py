@@ -1,3 +1,4 @@
+from platform import platform
 from tkinter import Menu
 from turtle import title
 from unittest import main
@@ -14,7 +15,7 @@ clock = pygame.time.Clock
 WIDTH=700 
 HEIGHT=700
 colors={"white":(255,255,255),"pink":(255,0,255),"blue":(0,0,255),"limeGreen":(0,100,50),"yellow":(255,255,0),"purple":(229,204,255),"randt":(random.randint(0,255), random.randint(0,255), random.randint(0,255)),"randb":(random.randint(0,255), random.randint(0,255), random.randint(0,255))}
-message=['Instructions', 'Settings', 'doesnt work',  "Medium", 'no code', 'scoreboard', 'bye']
+message=['Instructions', 'Settings', 'Easy',  "Medium", 'Hard', 'Scoreboard', 'Exit']
 
 screen=pygame.display.set_mode((WIDTH,HEIGHT)) 
 pygame.display.set_caption("Menu")  
@@ -89,8 +90,10 @@ def mainMenu():
     
     #pygame.draw.rect(screen, colors.get('purple'), Button_settings)
     Title = TITLE_FONT.render("Menu", 1, colors.get(txtcolor))
+    hdng = MENU_FONT.render(name,1,colors.get(txtcolor))
     screen.fill(colors.get(bgcolor))
     screen.blit(Title, (WIDTH//2 - (Title.get_width()//2), 10))
+    screen.blit(hdng, (WIDTH//1.2 - (Title.get_width()//1.5), 10))
     yMenu = HEIGHT//8
     
     for item in message:
@@ -119,7 +122,7 @@ def mainMenu():
                 if Button_settings.collidepoint((mx, my)):
                     settings()
                 if Button_Game1.collidepoint((mx,my)):
-                    Play()
+                    test()
                 if Button_Game2.collidepoint((mx, my)):
                     Easy()
                 if Button_Game3.collidepoint((mx,my)):
@@ -128,6 +131,14 @@ def mainMenu():
                     scoreboard()
                 if Button_exit.collidepoint((mx,my)):
                     exit()
+
+def test():
+    global bg
+    screen.blit(bg, (0,0))
+    pygame.display.update
+    platform = pygame.Rect(WIDTH//4-WIDTH//12, HEIGHT//4, WIDTH//6, HEIGHT//14)
+    pygame.draw.rect(screen, colors.get("blue"), platform)
+
 def Easy():
     global height, walkCount
     import pygame
@@ -313,6 +324,7 @@ def settings():
 
     pygame.display.update()
     setting = True
+    active = False
     while setting:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
@@ -354,21 +366,28 @@ def settings():
                 if Button_8.collidepoint((mx,my)): 
                     pygame.draw.rect(screen, colors.get("blue"), Button_9)
                     pygame.display.update()
-                    if event.type == pygame.KEYDOWN:
-                        input('what is your name? ')
-                        if event.key == pygame.K_RETURN:
-                            print(name)
-                           
-                        if event.key ==pygame.K_BACKSPACE:
+                    active = not active 
+                else: 
+                    active = False
+            if event.type == pygame.KEYDOWN:
+                if active:
+                    if event.key == pygame.K_RETURN:
+                        print(name)
+                        mainMenu()
+                    
+                    elif event.key ==pygame.K_BACKSPACE:
                             name=name[:-1]
                             print('back')
-                        else:
-                            name += event.unicode
-                    pygame.draw.rect(screen, colors.get("purple"), Button_9)
-                    textSurface=MENU_FONT.render(name, True, txtcolor)
+                    else:
+                        name += event.unicode
+                        print(name)
                     
-                    screen.blit(textSurface, (Button_9.x+5, Button_9.y+5))
+                    pygame.draw.rect(screen, colors.get("purple"), Button_9)
+                    textSurface=MENU_FONT.render(name, True, 'yellow')
+                   # screen.blit(textSurface, name(Button_9,mx+5, Button_9,my+5))
+                    screen.blit(textSurface, Button_9)
                     pygame.display.flip()
+                    #screen.blit(name, Button_9)
                  
 
 
