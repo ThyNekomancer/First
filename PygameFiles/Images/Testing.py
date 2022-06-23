@@ -211,18 +211,19 @@ def test():
         global score
         global x, y, plattopleftx, plattoprightx, plattopy, isJump, hbh, landed, isJump
         global jumpCount
+        score = 0
         if isJump and jumpCount < -1:
             if y+hbh<plattopy:
                 if x>plattopleftx and x<plattoprightx:
                     landed = True
-                    score=50
+                    score+=50
                     print(score)
                     y=plattopy-hbh
                     jumpCount=10
                     isJump=False
                 elif x+hbw>plattopleftx and x+hbw<plattoprightx:
                     landed = True
-                    score=50
+                    score+=50
                     print(score)
                     y=plattopy-hbh
                     jumpCount=10
@@ -235,19 +236,19 @@ def test():
 
     def checklanding2():
         global x, y, left2x, right2x, plat2y, isJump, hbh, hbw, landed, isJump
-        global jumpCount
+        global jumpCount, score
         if isJump and jumpCount < -1:
             if y+hbh<plat2y:
                 if x>left2x and x<right2x:
                     landed = True
-                    score=100
+                    score+=100
                     print(score)
                     y=plat2y-hbh
                     jumpCount=10
                     isJump=False
                 elif x+hbw>left2x and x+hbw<right2x:
                     landed = True
-                    score=100
+                    score+=100
                     print(score)
                     y=plat2y-hbh
                     jumpCount=10
@@ -262,12 +263,12 @@ def test():
 
     def checklanding3():
         global x, y, left3x, right3x, plat3y, isJump, hbh, hbw, landed, isJump
-        global jumpCount
+        global jumpCount, score
         if isJump and jumpCount < -1:
             if y+hbh<plat3y:
                 if x>left3x and x<right3x:
                     landed = True
-                    score=150
+                    score+=150
                     print('score')
                     y=plat3y-hbh
                     jumpCount=10
@@ -283,7 +284,7 @@ def test():
                     mainMenu()
                 elif x+hbw>left3x and x+hbw<right3x:
                     landed = True
-                    score=150
+                    score+=150
                     print(score)
                     y=plat3y-hbh
                     jumpCount=10
@@ -366,6 +367,7 @@ def Medium():
     global left4x, right4x, plat4y, platform4
     win = pygame.display.set_mode((1000,800))
     bg = pygame.image.load('Background2.png')
+    bg = pygame.transform.scale(bg, (1000,800))
     walkRight = [pygame.image.load('R1.png'), pygame.image.load('R2.png'), pygame.image.load('R3.png'), pygame.image.load('R4.png'), pygame.image.load('R5.png'), pygame.image.load('R6.png'), pygame.image.load('R7.png'), pygame.image.load('R8.png'), pygame.image.load('R9.png')]
     walkLeft = [pygame.image.load('L1.png'), pygame.image.load('L2.png'), pygame.image.load('L3.png'), pygame.image.load('L4.png'), pygame.image.load('L5.png'), pygame.image.load('L6.png'), pygame.image.load('L7.png'), pygame.image.load('L8.png'), pygame.image.load('L9.png')]
     char = pygame.image.load('standing.png')
@@ -446,18 +448,19 @@ def Medium():
         global score
         global x, y, plattopleftx, plattoprightx, plattopy, isJump, hbh, landed, isJump
         global jumpCount
+        score = 0
         if isJump and jumpCount < -1:
             if y+hbh<plattopy:
                 if x>plattopleftx and x<plattoprightx:
                     landed = True
-                    score=50
+                    score+=50
                     print(score)
                     y=plattopy-hbh
                     jumpCount=10
                     isJump=False
                 elif x+hbw>plattopleftx and x+hbw<plattoprightx:
                     landed = True
-                    score=50
+                    score+=50
                     print(score)
                     y=plattopy-hbh
                     jumpCount=10
@@ -469,20 +472,21 @@ def Medium():
                     #jumpCount=10
 
     def checklanding2():
-        global x, y, left2x, right2x, plat2y, isJump, hbh, hbw, landed, isJump
-        global jumpCount
+        global x, y, left2x, right2x, plat2y, isJump, hbh, hbw, landed, isJump, score
+        global jumpCount, score
+        
         if isJump and jumpCount < -1:
             if y+hbh<plat2y:
                 if x>left2x and x<right2x:
                     landed = True
-                    score=150
+                    score+=150
                     print(score)
                     y=plat2y-hbh
                     jumpCount=10
                     isJump=False
                 elif x+hbw>left2x and x+hbw<right2x:
                     landed = True
-                    score=150
+                    score+=150
                     print(score)
                     y=plat2y-hbh
                     jumpCount=10
@@ -493,20 +497,20 @@ def Medium():
                 # isJump=False
                 # jumpCount=10
     def checklanding4():
-        global x, y, left4x, right4x, plat4y, isJump, hbh, hbw, landed, isJump
+        global x, y, left4x, right4x, plat4y, isJump, hbh, hbw, landed, isJump, score 
         global jumpCount, win
         if isJump and jumpCount < -1:
             if y+hbh<plat4y:
                 if x>left4x and x<right4x:
                     landed = True
-                    score=450
+                    score+=450
                     print(score)
                     y=plat4y-hbh
                     jumpCount=10
                     isJump=False
               
                     MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//40)
-                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 200!', 1, colors.get(txtcolor))
+                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 450!', 1, colors.get(txtcolor))
                     screen.fill(colors.get(bgcolor))
                     screen.blit(title, (WIDTH//2, HEIGHT//2))
                     x=50
@@ -517,14 +521,14 @@ def Medium():
                     mainMenu()
                 elif x+hbw>left4x and x+hbw<right4x:
                     landed = True
-                    score=450
+                    score+=450
                     print(score)
                     y=plat4y-hbh
                     jumpCount=10
                     isJump=False
                
                     MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//40)
-                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 200!', 1, colors.get(txtcolor))
+                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 450!', 1, colors.get(txtcolor))
                     screen.fill(colors.get(bgcolor))
                     screen.blit(title, (WIDTH//2, HEIGHT//2))
                     x=50
@@ -537,13 +541,13 @@ def Medium():
 
 
     def checklanding3():
-        global x, y, left3x, right3x, plat3y, isJump, hbh, hbw, landed, isJump
+        global x, y, left3x, right3x, plat3y, isJump, hbh, hbw, landed, isJump, score
         global jumpCount, win
         if isJump and jumpCount < -1:
             if y+hbh<plat3y:
                 if x>left3x and x<right3x:
                     landed = True
-                    score=200
+                    score+=200
                     print(score)
                     y=plat3y-hbh
                     jumpCount=10
@@ -551,7 +555,7 @@ def Medium():
                     
                 elif x+hbw>left3x and x+hbw<right3x:
                     landed = True
-                    score=200
+                    score+=200
                     print(score)
                     y=plat3y-hbh
                     jumpCount=10
@@ -625,8 +629,10 @@ def Hard():
     global left2x, right2x, plat2y
     global left3x, right3x, plat3y
     global left4x, right4x, plat4y, platform4
+    global left5x, right5x, plat5y, platform5
     win = pygame.display.set_mode((1000,800))
-    bg = pygame.image.load('Background3.png')
+    bg = pygame.image.load('Background5.gif')
+    bg = pygame.transform.scale(bg, (1000,800))
     walkRight = [pygame.image.load('R1.png'), pygame.image.load('R2.png'), pygame.image.load('R3.png'), pygame.image.load('R4.png'), pygame.image.load('R5.png'), pygame.image.load('R6.png'), pygame.image.load('R7.png'), pygame.image.load('R8.png'), pygame.image.load('R9.png')]
     walkLeft = [pygame.image.load('L1.png'), pygame.image.load('L2.png'), pygame.image.load('L3.png'), pygame.image.load('L4.png'), pygame.image.load('L5.png'), pygame.image.load('L6.png'), pygame.image.load('L7.png'), pygame.image.load('L8.png'), pygame.image.load('L9.png')]
     char = pygame.image.load('standing.png')
@@ -639,16 +645,20 @@ def Hard():
     plattopleftx = WIDTH//4-WIDTH//4
     plattoprightx= WIDTH//4-WIDTH//4+WIDTH//6
     plattopy = HEIGHT-200
-    left2x = WIDTH//4+WIDTH//4
-    right2x = WIDTH//4+WIDTH//4+WIDTH//6
-    plat2y = HEIGHT-350
-    left3x = WIDTH//4 + WIDTH//2
-    right3x = WIDTH//4 +WIDTH//2+WIDTH//6
-    plat3y = HEIGHT - 500
+    left2x = WIDTH//12+WIDTH//4
+    right2x = WIDTH//12+WIDTH//4+WIDTH//6
+    plat2y = HEIGHT-390
+    left3x = WIDTH//5 + WIDTH//2
+    right3x = WIDTH//5 +WIDTH//2+WIDTH//6
+    plat3y = HEIGHT - 550
     platform3 = pygame.Rect(left3x, plat3y, (right3x-left3x), HEIGHT//14)
-    left4x =  WIDTH//3
-    right4x = WIDTH//3+WIDTH//6
-    plat4y = HEIGHT - 600
+    left4x =  WIDTH//1.0
+    right4x = WIDTH//1.0+WIDTH//6
+    plat4y = HEIGHT - 300
+    left5x = WIDTH +WIDTH//6 + WIDTH//12
+    right5x = WIDTH + WIDTH//6 + WIDTH//6 + WIDTH//12
+    plat5y = HEIGHT - 490
+    platform5 = pygame.Rect(left5x, plat5y, (right5x-left5x), HEIGHT//14)
     platform4 = pygame.Rect(left4x, plat4y, (right4x-left4x), HEIGHT//14)
     platform3 = pygame.Rect(left3x, plat3y, (right3x-left3x), HEIGHT//14)
     platform2 = pygame.Rect(left2x, plat2y, (right2x-left2x), HEIGHT//14)
@@ -658,6 +668,7 @@ def Hard():
     pygame.draw.rect(screen,1, platform2)
     pygame.draw.rect(screen,1, platform3)
     pygame.draw.rect(screen,1,platform4)
+    pygame.draw.rect(screen,1,platform5)
     pygame.display.update()
 
     vel = 7
@@ -701,17 +712,19 @@ def Hard():
         pygame.draw.rect(screen, colors.get('blue'), platform2)
         pygame.draw.rect(screen, colors.get('blue'), platform3)
         pygame.draw.rect(screen, colors.get('blue'), platform4)
+        pygame.draw.rect(screen,colors.get('blue'), platform5)
         pygame.display.update() 
 
     def Checklanding():
         global score
         global x, y, plattopleftx, plattoprightx, plattopy, isJump, hbh, landed, isJump
         global jumpCount
+        score = 0
         if isJump and jumpCount < -1:
             if y+hbh<plattopy:
                 if x>plattopleftx and x<plattoprightx:
                     landed = True
-                    score=50
+                    score+=50
                     print(score)
                     y=plattopy-hbh
                     jumpCount=10
@@ -731,19 +744,19 @@ def Hard():
 
     def checklanding2():
         global x, y, left2x, right2x, plat2y, isJump, hbh, hbw, landed, isJump
-        global jumpCount
+        global jumpCount, score
         if isJump and jumpCount < -1:
             if y+hbh<plat2y:
                 if x>left2x and x<right2x:
                     landed = True
-                    score=150
+                    score+=150
                     print(score)
                     y=plat2y-hbh
                     jumpCount=10
                     isJump=False
                 elif x+hbw>left2x and x+hbw<right2x:
                     landed = True
-                    score=150
+                    score+=150
                     print(score)
                     y=plat2y-hbh
                     jumpCount=10
@@ -755,19 +768,42 @@ def Hard():
                 # jumpCount=10
     def checklanding4():
         global x, y, left4x, right4x, plat4y, isJump, hbh, hbw, landed, isJump
-        global jumpCount, win
+        global jumpCount, win, score
         if isJump and jumpCount < -1:
             if y+hbh<plat4y:
                 if x>left4x and x<right4x:
                     landed = True
-                    score=450
+                    score+=450
                     print(score)
                     y=plat4y-hbh
                     jumpCount=10
                     isJump=False
               
+                    
+                elif x+hbw>left4x and x+hbw<right4x:
+                    landed = True
+                    score+=450
+                    print(score)
+                    y=plat4y-hbh
+                    jumpCount=10
+                    isJump=False
+               
+                   
+    def checklanding5():
+        global x, y, left5x, right5x, plat5y, isJump, hbh, hbw, landed, isJump
+        global jumpCount, win, score
+        if isJump and jumpCount < -1:
+            if y+hbh<plat5y:
+                if x>left5x and x<right5x:
+                    landed = True
+                    score+=600
+                    print(score)
+                    y=plat5y-hbh
+                    jumpCount=10
+                    isJump=False
+              
                     MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//40)
-                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 200!', 1, colors.get(txtcolor))
+                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 600!', 1, colors.get(txtcolor))
                     screen.fill(colors.get(bgcolor))
                     screen.blit(title, (WIDTH//2, HEIGHT//2))
                     x=50
@@ -776,16 +812,16 @@ def Hard():
                     pygame.time.delay(2000)
                     win = pygame.display.set_mode((700,700))
                     mainMenu()
-                elif x+hbw>left4x and x+hbw<right4x:
+                elif x+hbw>left5x and x+hbw<right5x:
                     landed = True
-                    score=450
+                    score=600
                     print(score)
-                    y=plat4y-hbh
+                    y=plat5y-hbh
                     jumpCount=10
                     isJump=False
                
                     MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//40)
-                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 200!', 1, colors.get(txtcolor))
+                    title=MENU_FONT.render('congrats ' +name + ',you got a score of 600!', 1, colors.get(txtcolor))
                     screen.fill(colors.get(bgcolor))
                     screen.blit(title, (WIDTH//2, HEIGHT//2))
                     x=50
@@ -799,12 +835,12 @@ def Hard():
 
     def checklanding3():
         global x, y, left3x, right3x, plat3y, isJump, hbh, hbw, landed, isJump
-        global jumpCount, win
+        global jumpCount, win, score
         if isJump and jumpCount < -1:
             if y+hbh<plat3y:
                 if x>left3x and x<right3x:
                     landed = True
-                    score=200
+                    score+=200
                     print(score)
                     y=plat3y-hbh
                     jumpCount=10
@@ -812,7 +848,7 @@ def Hard():
                     
                 elif x+hbw>left3x and x+hbw<right3x:
                     landed = True
-                    score=200
+                    score+=200
                     print(score)
                     y=plat3y-hbh
                     jumpCount=10
@@ -863,6 +899,7 @@ def Hard():
             if jumpCount >= -10:
                 y -= (jumpCount * abs(jumpCount)) * 0.5
                 jumpCount -= 1
+                checklanding5()
                 checklanding4()
                 checklanding3()
                 checklanding2()
@@ -1068,30 +1105,46 @@ def scoreboard():
         three = two
         two = high
         high = score
+        name1=name
+    else: 
+        name1= ''
     if score>two and score<high:
         five = four
         four = three
         three = two
         two = score
+        name2=name
+    else:
+        name2= ''
     if score>three and score<two:
         five = four
         four = three
         three = score
+        name3=name
+    else:
+        name3=''
     if score>four and score<three:
         five = four
         four = score
+        name4=name
+    else:
+        name4=''
     if score>five and score<four:
         five = score
+        name5=name
+    else:
+        name5=''
+    
     date=datetime.datetime.now()
-    scrLine="1. "+str(high)+"    "+name + "   "+date.strftime("%m-%d-%Y")+ "\n"
-    scrLine2="2. "+str(two)+"    "+name + "   "+date.strftime("%m-%d-%Y")+ "\n"
-    scrLine3="3. "+str(three)+"    "+name + "   "+date.strftime("%m-%d-%Y")+ "\n"       
-    scrLine4="4. "+str(four)+"    "+name + "   "+date.strftime("%m-%d-%Y")+ "\n"
-    scrLine5="5. "+str(five)+"    "+name + "   "+date.strftime("%m-%d-%Y")+ "\n"
-    myFile = open("score.txt", 'a')
+    scrLine="1. "+str(high)+"    "+name1 + "   "+date.strftime("%m-%d-%Y")+ "\n"
+    scrLine2="2. "+str(two)+"    "+name2 + "   "+date.strftime("%m-%d-%Y")+ "\n"
+    scrLine3="3. "+str(three)+"    "+name3 + "   "+date.strftime("%m-%d-%Y")+ "\n"       
+    scrLine4="4. "+str(four)+"    "+name4 + "   "+date.strftime("%m-%d-%Y")+ "\n"
+    scrLine5="5. "+str(five)+"    "+name5 + "   "+date.strftime("%m-%d-%Y")+ "\n"
+    myFile = open("scoreboard.txt", 'a')
     myFile.write(scrLine+scrLine2+scrLine3+scrLine4+scrLine5)
     myFile.close()
-    File = open("score.txt", "r")
+    File = open("scoreboard.txt", "r")
     yscores=150
     content = File.readlines()
     for line in content[-5:]:
@@ -1111,6 +1164,7 @@ def scoreboard():
                 mousePos=pygame.mouse.get_pos()
                 mx=mousePos[0]
                 my=mousePos[1]
+    
 
 
 mainMenu()

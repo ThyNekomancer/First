@@ -1,6 +1,11 @@
 how to play
 
-you will control the circle
-the circle tries to eat the villan
-everyime you eat him, you get bigger
-get as big as possible
+you will control the hero
+the hero tries jumps from 
+platform to platform to reach the end
+use the arrow keys to move,
+and the space bar to jump 
+easy jumps are worth 50 points,
+harder ones are worth 100-150
+if you fall, your score goes back to zero
+good luck!
