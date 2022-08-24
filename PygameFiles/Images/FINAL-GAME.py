@@ -16,7 +16,7 @@ colors={"white":(255,255,255),"pink":(255,0,255),"blue":(0,0,255),"limeGreen":(0
 message=['Instructions', 'Settings', 'Easy',  "Medium", 'Hard', 'Scoreboard', 'Exit']
 
 screen=pygame.display.set_mode((WIDTH,HEIGHT)) 
-pygame.display.set_caption("Menu")  
+pygame.display.set_caption("Morrigans")  
 
 bg=pygame.image.load('bgSmaller.jpg')
 char = pygame.image.load('standing.png')
