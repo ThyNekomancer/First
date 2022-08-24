@@ -30,6 +30,14 @@ print('You sure your up for this? ')
 print(' ')
 input('yeah, a little closure is always good, right?')
 print(' ')
+print('I suppose, just, look out for yourself, okay? ')
+print(' ')
+input("Always will, I'm pulling up now, ill see you in a little bit ")
+print(' ')
+input("Alright, love you, stay safe ")
+
+
+
 
 
 
